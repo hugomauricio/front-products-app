@@ -1,14 +1,29 @@
 <div class="table-wrapper">
   <table class="products-table">
     <thead>
-      <tr>
+    <tr>
         <th>Logo</th>
         <th>Nombre del producto</th>
-        <th>Descripción</th>
-        <th>Fecha de liberación</th>
-        <th>Fecha de reestructuración</th>
+        <th>
+        <span class="th-content">
+            Descripción
+            <span class="info-icon" aria-hidden="true">i</span>
+        </span>
+        </th>
+        <th>
+        <span class="th-content">
+            Fecha de liberación
+            <span class="info-icon" aria-hidden="true">i</span>
+        </span>
+        </th>
+        <th>
+        <span class="th-content">
+            Fecha de reestructuración
+            <span class="info-icon" aria-hidden="true">i</span>
+        </span>
+        </th>
         <th class="actions-column"></th>
-      </tr>
+    </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of products; trackBy: trackByProductId">

@@ -1,0 +1,17 @@
+<div class="form-page">
+  <div *ngIf="isLoadingProduct" class="form-page__state">
+    Cargando producto...
+  </div>
+
+  <app-product-form
+    *ngIf="!isLoadingProduct && product"
+    mode="edit"
+    [initialValue]="product"
+    [loading]="loading"
+    (formSubmit)="onSubmit($event)">
+  </app-product-form>
+
+  <div *ngIf="errorMessage" class="form-page__error">
+    {{ errorMessage }}
+  </div>
+</div>

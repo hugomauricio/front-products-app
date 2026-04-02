@@ -1,0 +1,33 @@
+<div class="table-wrapper">
+  <table class="products-table">
+    <thead>
+      <tr>
+        <th>Logo</th>
+        <th>Nombre del producto</th>
+        <th>Descripción</th>
+        <th>Fecha de liberación</th>
+        <th>Fecha de reestructuración</th>
+        <th class="actions-column"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; trackBy: trackByProductId">
+        <td>
+          <div class="product-logo">
+            {{ product.name.charAt(0) | uppercase }}
+          </div>
+        </td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.date_release }}</td>
+        <td>{{ product.date_revision }}</td>
+        <td class="actions-column">
+          <app-product-actions-menu
+            (edit)="edit.emit(product)"
+            (delete)="delete.emit(product)">
+          </app-product-actions-menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

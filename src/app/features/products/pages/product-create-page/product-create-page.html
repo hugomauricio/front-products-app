@@ -1,0 +1,11 @@
+<div class="form-page">
+  <app-product-form
+    mode="create"
+    [loading]="loading"
+    (formSubmit)="onSubmit($event)">
+  </app-product-form>
+
+  <div *ngIf="errorMessage" class="form-page__error">
+    {{ errorMessage }}
+  </div>
+</div>

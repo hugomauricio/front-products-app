@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f6f8;
+  color: #1f2937;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:root {
+  --color-primary: #213a7a;
+  --color-secondary: #f4e58d;
+  --color-danger: #e24a4a;
+  --color-border: #d8dde6;
+  --color-surface: #ffffff;
+  --color-muted: #6b7280;
+  --color-background-panel: #f0f2f5;
+}

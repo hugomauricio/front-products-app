@@ -1,0 +1,18 @@
+<div class="actions-menu">
+  <button
+    type="button"
+    class="actions-menu__trigger"
+    (click)="toggleMenu($event)"
+    aria-label="Abrir menú de acciones">
+    ⋮
+  </button>
+
+  <div class="actions-menu__dropdown" *ngIf="isOpen">
+    <button type="button" class="actions-menu__item" (click)="onEdit()">
+      Editar
+    </button>
+    <button type="button" class="actions-menu__item" (click)="onDelete()">
+      Eliminar
+    </button>
+  </div>
+</div>

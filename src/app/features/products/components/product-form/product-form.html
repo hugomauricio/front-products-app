@@ -1,0 +1,125 @@
+<section class="product-form-card">
+  <header class="product-form-card__header">
+    <h1 class="product-form-card__title">Formulario de Registro</h1>
+  </header>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="product-form">
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="id">ID</label>
+        <input
+          id="id"
+          type="text"
+          formControlName="id"
+          [class.input-error]="hasControlError('id')"
+        />
+        <small *ngIf="hasControlError('id', 'required')" class="error-text">
+          ID es requerido
+        </small>
+        <small *ngIf="hasControlError('id', 'minlength')" class="error-text">
+          ID debe tener al menos 3 caracteres
+        </small>
+        <small *ngIf="hasControlError('id', 'maxlength')" class="error-text">
+          ID debe tener máximo 10 caracteres
+        </small>
+        <small *ngIf="hasControlError('id', 'productIdExists')" class="error-text">
+          ID no válido
+        </small>
+      </div>
+
+      <div class="form-field">
+        <label for="name">Nombre</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          [class.input-error]="hasControlError('name')"
+        />
+        <small *ngIf="hasControlError('name', 'required')" class="error-text">
+          Nombre es requerido
+        </small>
+        <small *ngIf="hasControlError('name', 'minlength')" class="error-text">
+          Nombre debe tener al menos 5 caracteres
+        </small>
+        <small *ngIf="hasControlError('name', 'maxlength')" class="error-text">
+          Nombre debe tener máximo 100 caracteres
+        </small>
+      </div>
+
+      <div class="form-field">
+        <label for="description">Descripción</label>
+        <input
+          id="description"
+          type="text"
+          formControlName="description"
+          [class.input-error]="hasControlError('description')"
+        />
+        <small *ngIf="hasControlError('description', 'required')" class="error-text">
+          Descripción es requerida
+        </small>
+        <small *ngIf="hasControlError('description', 'minlength')" class="error-text">
+          Descripción debe tener al menos 10 caracteres
+        </small>
+        <small *ngIf="hasControlError('description', 'maxlength')" class="error-text">
+          Descripción debe tener máximo 200 caracteres
+        </small>
+      </div>
+
+      <div class="form-field">
+        <label for="logo">Logo</label>
+        <input
+          id="logo"
+          type="text"
+          formControlName="logo"
+          [class.input-error]="hasControlError('logo')"
+        />
+        <small *ngIf="hasControlError('logo', 'required')" class="error-text">
+          Logo es requerido
+        </small>
+      </div>
+
+      <div class="form-field">
+        <label for="date_release">Fecha Liberación</label>
+        <input
+          id="date_release"
+          type="date"
+          formControlName="date_release"
+          [class.input-error]="hasControlError('date_release')"
+        />
+        <small *ngIf="hasControlError('date_release', 'required')" class="error-text">
+          Fecha de liberación es requerida
+        </small>
+        <small *ngIf="hasControlError('date_release', 'invalidReleaseDate')" class="error-text">
+          La fecha debe ser igual o mayor a la actual
+        </small>
+      </div>
+
+      <div class="form-field">
+        <label for="date_revision">Fecha Revisión</label>
+        <input
+          id="date_revision"
+          type="date"
+          readonly
+          formControlName="date_revision"
+          [class.input-error]="hasControlError('date_revision') || hasFormError('invalidRevisionDate')"
+        />
+        <small *ngIf="hasControlError('date_revision', 'required')" class="error-text">
+          Fecha de revisión es requerida
+        </small>
+        <small *ngIf="hasFormError('invalidRevisionDate')" class="error-text">
+          La fecha debe ser exactamente un año posterior a la fecha de liberación
+        </small>
+      </div>
+    </div>
+
+    <div class="product-form__actions">
+      <button type="button" class="secondary-button" (click)="onReset()">
+        Reiniciar
+      </button>
+
+      <button type="submit" class="primary-button" [disabled]="loading">
+        {{ mode === 'create' ? 'Agregar' : 'Guardar' }}
+      </button>
+    </div>
+  </form>
+</section>

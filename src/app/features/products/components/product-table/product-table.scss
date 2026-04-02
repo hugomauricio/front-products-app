@@ -1,0 +1,49 @@
+.table-wrapper {
+  overflow-x: auto;
+  background-color: #ffffff;
+  padding: 16px;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.products-table th,
+.products-table td {
+  padding: 16px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.products-table th {
+  font-weight: 600;
+  color: #374151;
+  background-color: #f8fafc;
+}
+
+.product-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #d9deea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.link-button {
+  border: none;
+  background: transparent;
+  color: #233a7b;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.actions-column {
+  width: 90px;
+  text-align: center;
+}

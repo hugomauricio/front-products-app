@@ -1,0 +1,70 @@
+<div class="products-page">
+  <header class="products-page__header">
+    <div class="brand">
+      <span class="brand__icon">◫</span>
+      <span class="brand__text">BANCO</span>
+    </div>
+  </header>
+
+  <main class="products-page__content">
+    <section class="products-panel">
+      <div class="products-panel__toolbar">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search..."
+          [ngModel]="searchTerm"
+          (ngModelChange)="onSearch($event)"
+        />
+
+        <button class="primary-button" type="button" (click)="goToCreate()">
+          Agregar
+        </button>
+      </div>
+
+    <div *ngIf="isLoading" class="table-skeleton">
+    <div class="table-skeleton__row" *ngFor="let item of [1,2,3,4,5]">
+        <div class="table-skeleton__cell table-skeleton__cell--circle"></div>
+        <div class="table-skeleton__cell"></div>
+        <div class="table-skeleton__cell"></div>
+        <div class="table-skeleton__cell"></div>
+        <div class="table-skeleton__cell"></div>
+        <div class="table-skeleton__cell table-skeleton__cell--small"></div>
+    </div>
+    </div>
+
+      <div *ngIf="errorMessage && !isLoading" class="state-message state-message--error">
+        {{ errorMessage }}
+      </div>
+
+      <app-product-table
+        *ngIf="!isLoading && !errorMessage"
+        [products]="visibleProducts"
+        (edit)="onEdit($event)"
+        (delete)="onDelete($event)">
+      </app-product-table>
+
+      <div *ngIf="!isLoading && !errorMessage" class="products-panel__footer">
+        <span class="results-count">{{ filteredProducts.length }} Resultados</span>
+
+        <select
+          class="page-size-select"
+          [ngModel]="pageSize"
+          (ngModelChange)="onPageSizeChange(+$event)"
+        >
+          <option [ngValue]="5">5</option>
+          <option [ngValue]="10">10</option>
+          <option [ngValue]="20">20</option>
+        </select>
+      </div>
+    </section>
+  </main>
+
+  <app-delete-confirm-modal
+    [isOpen]="isDeleteModalOpen"
+    [productName]="selectedProduct?.name || ''"
+    [loading]="isDeleting"
+    (cancel)="closeDeleteModal()"
+    (confirm)="confirmDelete()">
+  </app-delete-confirm-modal>
+</div>

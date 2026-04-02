@@ -1,0 +1,20 @@
+<div class="modal-backdrop" *ngIf="isOpen">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+    <div class="modal-card__body">
+      <h2 id="delete-modal-title" class="modal-card__title">
+        ¿Estás seguro de eliminar el producto
+        <span class="modal-card__highlight">{{ productName }}</span>?
+      </h2>
+    </div>
+
+    <div class="modal-card__actions">
+      <button type="button" class="secondary-button" (click)="onCancel()" [disabled]="loading">
+        Cancelar
+      </button>
+
+      <button type="button" class="primary-button" (click)="onConfirm()" [disabled]="loading">
+        {{ loading ? 'Eliminando...' : 'Eliminar' }}
+      </button>
+    </div>
+  </div>
+</div>
